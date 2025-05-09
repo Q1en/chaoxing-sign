@@ -2,6 +2,7 @@ import threading
 import requests
 import logging
 import re
+import time
 
 # 全局配置
 lock = threading.Lock()
@@ -159,7 +160,7 @@ def main():
             current = current_code_index
         progress = (current / total_codes) * 100
         print(f"\r进度: {progress:.2f}% | 已尝试: {current} 次 | 最新代码: {gesture_codes[current - 1] if current > 0 else 'N/A'}   ", end='')
-        threading.Event().wait(0.5)
+        time.sleep(0.5)
 
     # 输出结果
     if found:
